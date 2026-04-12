@@ -66,6 +66,5 @@ app.use((err, req, res, next) => {
   res.status(500).json({ success: false, message: "Internal Server Error" });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is flying on port ${PORT}`);
-});
+// ✅ REQUIRED for Vercel
+export default app;
