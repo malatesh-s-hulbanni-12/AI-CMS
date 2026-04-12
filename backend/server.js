@@ -15,8 +15,8 @@ const PORT = process.env.PORT || 5000;
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
-  "https://ai-cms-creaters.vercel.app",
-  "https://ai-cms-admin.vercel.app",
+  "https://ai-cms-creaters.onrender.com",
+  "https://ai-cms-admin.onrender.com",
 ];
 
 app.use(
