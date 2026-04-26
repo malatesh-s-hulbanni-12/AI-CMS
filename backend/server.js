@@ -17,6 +17,7 @@ const allowedOrigins = [
   "http://localhost:5174",
   "https://ai-cms-creaters.onrender.com",
   "https://ai-cms-admin.onrender.com",
+  "https://ai-cms-admin.vercel.app",
 ];
 
 app.use(
