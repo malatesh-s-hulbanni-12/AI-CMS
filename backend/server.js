@@ -18,6 +18,7 @@ const allowedOrigins = [
   "https://ai-cms-creaters.onrender.com",
   "https://ai-cms-admin.onrender.com",
   "https://ai-cms-admin.vercel.app",
+  "https://ai-cms-frontend-jade.vercel.app",
 ];
 
 app.use(
