@@ -348,6 +348,9 @@ export const createOrUpdatePD = async (req, res) => {
 
     const creatorId = req.id || "Admin"; // From auth middleware
 
+    // ⭐ Extract schemeYear from metaData
+    const schemeYear = metaData?.schemeYear || "2024";
+
     let s1_Id, s2_Id, s3_Id, s4_Id;
     let newPdVersion = metaData.versionNo || "1.0.0";
 
@@ -400,24 +403,28 @@ export const createOrUpdatePD = async (req, res) => {
       const s1 = await Section1_Info.create({
         ...section1Data,
         programId,
+        schemeYear: schemeYear,  // ✅ ADD THIS
         version: "1.0.0",
         createdBy: creatorId,
       });
       const s2 = await Section2_Objectives.create({
         ...section2Data,
         programId,
+        schemeYear: schemeYear,  // ✅ ADD THIS
         version: "1.0.0",
         createdBy: creatorId,
       });
       const s3 = await Section3_Structure.create({
         ...mappedSection3Data,
         programId,
+        schemeYear: schemeYear,  // ✅ ADD THIS
         version: "1.0.0",
         createdBy: creatorId,
       });
       const s4 = await Section4_Electives.create({
         ...mappedSection4Data,
         programId,
+        schemeYear: schemeYear,  // ✅ ADD THIS
         version: "1.0.0",
         createdBy: creatorId,
       });
@@ -467,13 +474,13 @@ export const createOrUpdatePD = async (req, res) => {
       if (updateAll || sectionsToUpdate.includes("section3")) {
         await Section3_Structure.findByIdAndUpdate(
           previousPD.section3_structure,
-          { ...mappedSection3Data },
+          { ...mappedSection3Data,schemeYear: schemeYear },
         );
       }
       if (updateAll || sectionsToUpdate.includes("section4")) {
         await Section4_Electives.findByIdAndUpdate(
           previousPD.section4_electives,
-          { ...mappedSection4Data },
+          { ...mappedSection4Data,schemeYear: schemeYear },
         );
       }
 
@@ -499,24 +506,25 @@ export const createOrUpdatePD = async (req, res) => {
       if (updateAll || sectionsToUpdate.includes("section1")) {
         await Section1_Info.findByIdAndUpdate(previousPD.section1_info, {
           ...section1Data,
+          schemeYear: schemeYear,  // ✅ ADD THIS
         });
       }
       if (updateAll || sectionsToUpdate.includes("section2")) {
         await Section2_Objectives.findByIdAndUpdate(
           previousPD.section2_objectives,
-          { ...section2Data },
+          { ...section2Data,schemeYear: schemeYear, },  // ✅ ADD THIS
         );
       }
       if (updateAll || sectionsToUpdate.includes("section3")) {
         await Section3_Structure.findByIdAndUpdate(
           previousPD.section3_structure,
-          { ...mappedSection3Data },
+          { ...mappedSection3Data,schemeYear: schemeYear,},  // ✅ ADD THIS},
         );
       }
       if (updateAll || sectionsToUpdate.includes("section4")) {
         await Section4_Electives.findByIdAndUpdate(
           previousPD.section4_electives,
-          { ...mappedSection4Data },
+          { ...mappedSection4Data,schemeYear: schemeYear,},  // ✅ ADD THIS
         );
       }
 
@@ -550,6 +558,7 @@ export const createOrUpdatePD = async (req, res) => {
       const s1 = await Section1_Info.create({
         ...section1Data,
         programId,
+        schemeYear: schemeYear,  // ✅ ADD THIS
         version: newPdVersion,
         createdBy: creatorId,
       });
@@ -560,6 +569,7 @@ export const createOrUpdatePD = async (req, res) => {
       const s2 = await Section2_Objectives.create({
         ...section2Data,
         programId,
+        schemeYear: schemeYear,  // ✅ ADD THIS
         version: newPdVersion,
         createdBy: creatorId,
       });
@@ -570,6 +580,7 @@ export const createOrUpdatePD = async (req, res) => {
       const s3 = await Section3_Structure.create({
         ...mappedSection3Data,
         programId,
+        schemeYear: schemeYear,  // ✅ ADD THIS
         version: newPdVersion,
         createdBy: creatorId,
       });
@@ -580,6 +591,7 @@ export const createOrUpdatePD = async (req, res) => {
       const s4 = await Section4_Electives.create({
         ...mappedSection4Data,
         programId,
+        schemeYear: schemeYear,  // ✅ ADD THIS
         version: newPdVersion,
         createdBy: creatorId,
       });

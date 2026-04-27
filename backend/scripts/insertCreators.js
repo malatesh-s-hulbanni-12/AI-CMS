@@ -9,7 +9,7 @@ const client = new MongoClient(process.env.MONGODB_URI);
 async function insertCreators() {
   try {
     await client.connect();
-    const db = client.db("your_database_name"); // Replace with your actual database name
+    const db = client.db("test"); // Replace with your actual database name
     const collection = db.collection("creaters");
 
     const creators = [

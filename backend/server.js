@@ -17,6 +17,9 @@ const allowedOrigins = [
   "http://localhost:5174",
   "https://pdms-creater.vercel.app",
   "https://pdms-admin.vercel.app",
+  
+  "https://ai-cms-admin.vercel.app",
+  "https://ai-cms-frontend-jade.vercel.app",
 ];
 
 app.use(
